@@ -32,6 +32,7 @@ export default function App() {
   const [shuffledQuestions, setShuffledQuestions] = useState([]);
   const [isProcessingAnswer, setIsProcessingAnswer] = useState(false);
   const [totalAttempts, setTotalAttempts] = useState(0);
+  const [feedback, setFeedback] = useState(null);
 
   // Pick 20 random questions at start
   useEffect(() => {
@@ -59,6 +60,7 @@ export default function App() {
     return () => subscription?.remove();
   }, [currentQuestionIndex, shuffledQuestions, isProcessingAnswer]);
 
+  // Play game, update scores and attempts
   const checkAnswer = (selectedAnswer) => {
     if (shuffledQuestions.length === 0 || isProcessingAnswer) return;
     setIsProcessingAnswer(true);
@@ -71,11 +73,15 @@ export default function App() {
     // Update score if the answer is correct
     if (selectedAnswer === currentQuestion.correctAnswer) {
       setScore((prev) => prev + 1);
+      setFeedback("[  correct  ]");
     } else {
       setLives((prev) => prev - 1);
+      setFeedback("[  nope  ]");
     }
 
+    // set timeout interval to prevent questions from displaying too fast
     setTimeout(() => {
+      setFeedback(null); // Clear feedback after 1 second
       setTiltBackground(null);
       if (currentQuestionIndex < shuffledQuestions.length - 1) {
         setCurrentQuestionIndex((prev) => prev + 1);
@@ -86,7 +92,7 @@ export default function App() {
     }, 800);
   };
 
-  // Function to display heart SVGs based on remaining lives
+  // Display heart SVG based on remaining lives
   const renderLives = () => {
     let hearts = [];
     for (let i = 0; i < lives; i++) {
@@ -239,6 +245,12 @@ export default function App() {
           </View>
         </View>
       </Modal>
+      {feedback && (
+        <View style={styles.feedbackContainer}>
+          <Text style={styles.feedbackText}>{feedback}</Text>
+        </View>
+      )}
+
       <View style={styles.bottomContainer}>
         <TouchableOpacity
           style={styles.resetButton}
@@ -246,11 +258,9 @@ export default function App() {
         >
           <Text style={styles.resetButtonText}>Reset</Text>
         </TouchableOpacity>
-        <View style={styles.footerContainer}>
-          <Text style={styles.footerText}>
-            Tilt left or right to answer
-          </Text>
-        </View>
+        <Text style={styles.footerText}>
+          Tilt left or right to answer
+        </Text>
       </View>
     </SafeAreaView>
   );
@@ -261,6 +271,9 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
   },
+
+  // HEADER //
+
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -272,20 +285,26 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "#000000",
   },
+
   headerText: {
     fontSize: 14,
     padding: 14,
     color: "#333",
   },
+
   heartsContainer: {
     flexDirection: "row",
     padding: 11,
   },
+
+  // Q & A COMPONENTS
+
   questionContainer: {
     flex: 1,
     justifyContent: "flex-start",
     marginTop: 250,
   },
+
   questionText: {
     fontSize: 18,
     fontWeight: "bold",
@@ -295,10 +314,12 @@ const styles = StyleSheet.create({
     marginBottom: 40,
     color: "#333",
   },
+
   answersContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
   },
+
   answerBox: {
     width: "40%",
     margin: 20,
@@ -317,18 +338,23 @@ const styles = StyleSheet.create({
     // Shadow for Android
     elevation: 4,
   },
+
   answerText: {
     fontSize: 14,
     fontWeight: "600",
     color: "#333",
     textAlign: "center",
   },
+
+  // SUMMARY MODAL //
+
   modalContainer: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
+
   modalContent: {
     backgroundColor: "#A0A0A0",
     borderColor: "#FFFFFF",
@@ -337,7 +363,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     alignItems: "center",
     width: "80%",
-    opacity: 0.8,
+    opacity: 0.9,
   },
 
   // Modal Title Styles
@@ -364,15 +390,46 @@ const styles = StyleSheet.create({
     borderColor: "white",
     borderRadius: 50,
   },
+
   buttonText: {
     color: "white",
     fontSize: 12,
     fontWeight: "bold",
   },
+
+  // FEEDBACK TEXT //
+
+  feedbackContainer: {
+    position: "absolute",
+    top: 700,
+    left: 0,
+    right: 0,
+    alignItems: "center",
+    zIndex: 1,
+
+    // Shadow for iOS
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+
+    // Shadow for Android
+    elevation: 4,
+  },
+
+  feedbackText: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "#FFFFFF",
+  },
+
+  // FOOTER //
+
   bottomContainer: {
     alignItems: "center",
     marginBottom: 20, // Adjust this for spacing between button and text
   },
+
   resetButton: {
     backgroundColor: "#",
     paddingVertical: 10,
@@ -382,7 +439,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 20, // This keeps it close to the footer text
+    marginBottom: 25, // This keeps it close to the footer text
 
     // Shadow for iOS
     shadowColor: "#000",
@@ -393,13 +450,11 @@ const styles = StyleSheet.create({
     // Shadow for Android
     elevation: 50,
   },
+
   resetButtonText: {
     color: "white",
     fontSize: 14,
     fontWeight: "bold",
-  },
-  footerContainer: {
-    alignItems: "center",
   },
 
   footerText: {
