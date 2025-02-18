@@ -255,7 +255,7 @@ export default function App() {
                   So close, yet so far!
                 </Text>
                 <Text style={styles.modalText}>
-                  "You almost reached greatness… but almost doesn’t
+                  "You almost reached greatness… but almost doesn't
                   cut it, does it?"
                 </Text>
                 <Text style={styles.modalText}>
@@ -268,8 +268,8 @@ export default function App() {
                   If trivia had a 'middle-class,' you'd be it.
                 </Text>
                 <Text style={styles.modalText}>
-                  "You're at that level where people say, 'Wow, you
-                  know stuff!' but never ask you for advice."
+                  "You have some knowledge, but let's not get ahead of
+                  ourselves."
                 </Text>
                 <Text style={styles.modalText}>
                   Final Score: {score}/20
@@ -288,16 +288,28 @@ export default function App() {
                   Final Score: {score}/20
                 </Text>
               </View>
-            ) : (
+            ) : score >= 1 ? (
               <View>
                 <Text style={[styles.modalTitle]}>
                   Well... at least you showed up!
                 </Text>
                 <Text style={styles.modalText}>
-                  "Are you playing with a blindfold on? Be honest."
+                  "This quiz wasn't an open-book test, but even if it
+                  was, would it have helped?"
                 </Text>
                 <Text style={styles.modalText}>
                   Final Score: {score}/20
+                </Text>
+              </View>
+            ) : (
+              <View>
+                <Text style={[styles.modalTitle]}>Zero? Ouch.</Text>
+                <Text style={styles.modalText}>
+                  "I've seen better trivia answers from people who
+                  didn't even take the quiz."
+                </Text>
+                <Text style={styles.modalText}>
+                  Final Score: 0/20
                 </Text>
               </View>
             )}
