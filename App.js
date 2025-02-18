@@ -176,6 +176,8 @@ export default function App() {
         { backgroundColor: tiltBackground || "#B2B2B2" },
       ]}
     >
+      {/* HEADER */}
+
       <View style={styles.header}>
         <Text style={styles.headerText}>
           Score: {score} / {totalAttempts}
@@ -186,6 +188,8 @@ export default function App() {
       <View style={styles.titleContainer}>
         <Text style={styles.title}>Compile & Conquer</Text>
       </View>
+
+      {/* Q & A COMPONENTS */}
 
       <View style={styles.questionContainer}>
         {shuffledQuestions.length > 0 ? (
@@ -200,7 +204,7 @@ export default function App() {
                   styles.answerBox,
                   tiltBackground && {
                     backgroundColor: tiltBackground,
-                  }, // Override background color
+                  },
                 ]}
               >
                 <Text style={styles.answerText}>
@@ -213,7 +217,7 @@ export default function App() {
                   styles.answerBox,
                   tiltBackground && {
                     backgroundColor: tiltBackground,
-                  }, // Override background color
+                  },
                 ]}
               >
                 <Text style={styles.answerText}>
@@ -227,25 +231,14 @@ export default function App() {
         )}
       </View>
 
+      {/* SUMMARY MODAL */}
+
       <Modal transparent={true} visible={gameOver}>
         <View style={styles.modalContainer}>
-          <View
-            style={[
-              styles.modalContent,
-              score === 20 && styles.modalContentPerfect, // Style for perfect score
-              score >= 15 && score < 20 && styles.modalContentGreat, // Style for great score
-              score >= 10 && score < 15 && styles.modalContentGood, // Style for good score
-              score < 10 && styles.modalContentOkay, // Style for okay score
-            ]}
-          >
+          <View style={[styles.modalContent]}>
             {score === 20 ? (
               <View>
-                <Text
-                  style={[
-                    styles.modalTitle,
-                    styles.modalTitlePerfect,
-                  ]}
-                >
+                <Text style={[styles.modalTitle]}>
                   You are a smarty pants, aren't you?
                 </Text>
                 <Text style={styles.modalText}>
@@ -254,9 +247,7 @@ export default function App() {
               </View>
             ) : score >= 15 ? (
               <View>
-                <Text
-                  style={[styles.modalTitle, styles.modalTitleGreat]}
-                >
+                <Text style={[styles.modalTitle]}>
                   You did pretty well!
                 </Text>
                 <Text style={styles.modalText}>
@@ -283,15 +274,7 @@ export default function App() {
               </View>
             )}
             <TouchableOpacity
-              style={[
-                styles.restartButton,
-                score === 20 && styles.restartButtonPerfect, // Style for perfect score
-                score >= 15 &&
-                  score < 20 &&
-                  styles.restartButtonGreat, // Style for great score
-                score >= 10 && score < 15 && styles.restartButtonGood, // Style for good score
-                score < 10 && styles.restartButtonOkay, // Style for okay score
-              ]}
+              style={[styles.restartButton]}
               onPress={resetGame}
             >
               <Text style={styles.buttonText}>Play Again</Text>
@@ -304,6 +287,8 @@ export default function App() {
           <Text style={styles.feedbackText}>{feedback}</Text>
         </View>
       )}
+
+      {/* FOOTER */}
 
       <View style={styles.bottomContainer}>
         <TouchableOpacity
@@ -408,7 +393,7 @@ const styles = StyleSheet.create({
 
   answerText: {
     fontFamily: "ChakraPetchMedium",
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: "500",
     color: "#333",
     textAlign: "center",
@@ -434,7 +419,6 @@ const styles = StyleSheet.create({
     opacity: 0.9,
   },
 
-  // Modal Title Styles
   modalTitle: {
     fontFamily: "ChakraPetchMedium",
     color: "#FFFFFF",
@@ -452,7 +436,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
 
-  // Restart Button Styles
   restartButton: {
     paddingVertical: 12,
     paddingHorizontal: 35,
