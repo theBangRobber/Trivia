@@ -1,6 +1,6 @@
 # Trivia Game
 
-A fun and interactive trivia game built using **React Native with Expo**. The game tests your knowledge in software engineering (from various tech stacks like HTML, CSS, React, Javascript, Java and React Native) and reacts to device movements using the **accelerometer**.
+A fun and interactive trivia game built using **React Native with Expo**. The game tests your knowledge in software engineering (from various tech stacks like HTML, CSS, React, Javascript, Java, React Native and OOP concepts) and reacts to device movements using the **accelerometer**.
 
 ## Features
 - Randomly selected trivia questions
