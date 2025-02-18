@@ -239,25 +239,50 @@ export default function App() {
             {score === 20 ? (
               <View>
                 <Text style={[styles.modalTitle]}>
-                  You are a smarty pants, aren't you?
+                  Trivia God Mode Activated!
+                </Text>
+                <Text style={styles.modalText}>
+                  "Google called. They want you to answer their
+                  questions now."
                 </Text>
                 <Text style={styles.modalText}>
                   Final Score: 20/20
                 </Text>
               </View>
-            ) : score >= 15 ? (
+            ) : score >= 16 ? (
               <View>
                 <Text style={[styles.modalTitle]}>
-                  You did pretty well!
+                  So close, yet so far!
+                </Text>
+                <Text style={styles.modalText}>
+                  "You almost reached greatness… but almost doesn’t
+                  cut it, does it?"
                 </Text>
                 <Text style={styles.modalText}>
                   Final Score: {score}/20
                 </Text>
               </View>
-            ) : score >= 10 ? (
+            ) : score >= 11 ? (
               <View>
                 <Text style={[styles.modalTitle]}>
-                  Not too shabby eh?
+                  If trivia had a 'middle-class,' you'd be it.
+                </Text>
+                <Text style={styles.modalText}>
+                  "You're at that level where people say, 'Wow, you
+                  know stuff!' but never ask you for advice."
+                </Text>
+                <Text style={styles.modalText}>
+                  Final Score: {score}/20
+                </Text>
+              </View>
+            ) : score >= 6 ? (
+              <View>
+                <Text style={[styles.modalTitle]}>
+                  Hey, at least you got some!
+                </Text>
+                <Text style={styles.modalText}>
+                  "You're in the 'participation trophy' zone.
+                  Congrats?"
                 </Text>
                 <Text style={styles.modalText}>
                   Final Score: {score}/20
@@ -266,7 +291,10 @@ export default function App() {
             ) : (
               <View>
                 <Text style={[styles.modalTitle]}>
-                  Next round would be better!
+                  Well... at least you showed up!
+                </Text>
+                <Text style={styles.modalText}>
+                  "Are you playing with a blindfold on? Be honest."
                 </Text>
                 <Text style={styles.modalText}>
                   Final Score: {score}/20
@@ -422,7 +450,7 @@ const styles = StyleSheet.create({
   modalTitle: {
     fontFamily: "ChakraPetchMedium",
     color: "#FFFFFF",
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: "bold",
     textAlign: "center",
     marginBottom: 15,
