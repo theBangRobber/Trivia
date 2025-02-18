@@ -12,6 +12,7 @@ import {
 import { Accelerometer } from "expo-sensors";
 import { questions } from "./questions";
 import Heart from "./assets/Heart.svg";
+import * as Font from "expo-font";
 
 // Set screen size
 const { width: screenWidth, height: screenHeight } =
@@ -36,6 +37,20 @@ export default function App() {
   const [feedback, setFeedback] = useState(null);
   const [needsReset, setNeedsReset] = useState(false);
   const [lastTiltDirection, setLastTiltDirection] = useState(null);
+  const [fontLoaded, setFontLoaded] = useState(false);
+
+  // Load the custom font
+  useEffect(() => {
+    async function loadFont() {
+      await Font.loadAsync({
+        Orbitron: require("./assets/fonts/Orbitron-Medium.ttf"),
+        ChakraPetchMedium: require("./assets/fonts/ChakraPetch-Medium.ttf"),
+      });
+      setFontLoaded(true);
+    }
+
+    loadFont();
+  }, []);
 
   // Pick the randomized questions once component loads
   useEffect(() => {
@@ -44,7 +59,12 @@ export default function App() {
 
   // Exit if there is no question or game is over
   useEffect(() => {
-    if (shuffledQuestions.length === 0 || gameOver) return;
+    if (shuffledQuestions.length === 0) return;
+
+    if (gameOver) {
+      Accelerometer.removeAllListeners(); // Stop accelerometer when game is over
+      return;
+    }
 
     // Set up listener for accelerometer data
     const subscription = Accelerometer.addListener(({ x }) => {
@@ -88,7 +108,6 @@ export default function App() {
     isProcessingAnswer,
     needsReset,
     lastTiltDirection,
-    gameOver,
   ]);
 
   // Play game, update scores and attempts
@@ -141,6 +160,15 @@ export default function App() {
     setShuffledQuestions(getRandomQuestions(questions)); // Get new 20 random questions
   };
 
+  // Show loading screen until font is loaded
+  if (!fontLoaded) {
+    return (
+      <View style={styles.loadingContainer}>
+        <Text>Loading...</Text>
+      </View>
+    );
+  }
+
   return (
     <SafeAreaView
       style={[
@@ -153,6 +181,10 @@ export default function App() {
           Score: {score} / {totalAttempts}
         </Text>
         <Text style={styles.headerHeart}>{renderLives()}</Text>
+      </View>
+
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>Compile & Conquer</Text>
       </View>
 
       <View style={styles.questionContainer}>
@@ -233,9 +265,7 @@ export default function App() {
               </View>
             ) : score >= 10 ? (
               <View>
-                <Text
-                  style={[styles.modalTitle, styles.modalTitleGood]}
-                >
+                <Text style={[styles.modalTitle]}>
                   Not too shabby eh?
                 </Text>
                 <Text style={styles.modalText}>
@@ -244,9 +274,7 @@ export default function App() {
               </View>
             ) : (
               <View>
-                <Text
-                  style={[styles.modalTitle, styles.modalTitleOkay]}
-                >
+                <Text style={[styles.modalTitle]}>
                   Next round would be better!
                 </Text>
                 <Text style={styles.modalText}>
@@ -313,6 +341,7 @@ const styles = StyleSheet.create({
   },
 
   headerText: {
+    fontFamily: "ChakraPetchMedium",
     fontSize: 14,
     padding: 14,
     color: "#333",
@@ -323,17 +352,29 @@ const styles = StyleSheet.create({
     padding: 11,
   },
 
+  titleContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+
+  title: {
+    fontFamily: "Orbitron", // Custom font applied
+    fontSize: 18,
+    color: "#333",
+  },
+
   // Q & A COMPONENTS
 
   questionContainer: {
     flex: 1,
     justifyContent: "flex-start",
-    marginTop: 250,
+    marginTop: 240,
   },
 
   questionText: {
+    fontFamily: "ChakraPetchMedium",
     fontSize: 18,
-    fontWeight: "bold",
+    fontWeight: "500",
     textAlign: "center",
     margin: 30,
     marginTop: 10,
@@ -366,8 +407,9 @@ const styles = StyleSheet.create({
   },
 
   answerText: {
-    fontSize: 14,
-    fontWeight: "600",
+    fontFamily: "ChakraPetchMedium",
+    fontSize: 15,
+    fontWeight: "500",
     color: "#333",
     textAlign: "center",
   },
@@ -394,14 +436,16 @@ const styles = StyleSheet.create({
 
   // Modal Title Styles
   modalTitle: {
+    fontFamily: "ChakraPetchMedium",
     color: "#FFFFFF",
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: "bold",
     textAlign: "center",
     marginBottom: 15,
   },
 
   modalText: {
+    fontFamily: "ChakraPetchMedium",
     textAlign: "center",
     fontSize: 15,
     fontWeight: "bold",
@@ -418,6 +462,7 @@ const styles = StyleSheet.create({
   },
 
   buttonText: {
+    fontFamily: "ChakraPetchMedium",
     color: "white",
     fontSize: 12,
     fontWeight: "bold",
@@ -444,7 +489,8 @@ const styles = StyleSheet.create({
   },
 
   feedbackText: {
-    fontSize: 32,
+    fontFamily: "ChakraPetchMedium",
+    fontSize: 24,
     // fontWeight: "bold",
     color: "#FFFFFF",
   },
@@ -478,12 +524,14 @@ const styles = StyleSheet.create({
   },
 
   resetButtonText: {
+    fontFamily: "ChakraPetchMedium",
     color: "white",
     fontSize: 14,
     fontWeight: "bold",
   },
 
   footerText: {
+    fontFamily: "ChakraPetchMedium",
     color: "#595959",
     fontSize: 12,
   },

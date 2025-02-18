@@ -1,8 +1,9 @@
-# Trivia Game
+# Compile & Conquer
 
 A fun and interactive trivia game built using **React Native with Expo**. The game tests your knowledge in software engineering (from various tech stacks like HTML, CSS, React, Javascript, Java, React Native and OOP concepts) and reacts to device movements using the **accelerometer**.
 
 ## Features
+
 - Randomly selected trivia questions
 - Interactive answering using device tilt (left/right)
 - Score tracking and feedback system
@@ -10,6 +11,7 @@ A fun and interactive trivia game built using **React Native with Expo**. The ga
 - Clean and engaging UI
 
 ## Game Mechanics
+
 1. The game presents multiple-choice questions.
 2. The player answers by tilting the device:
    - Tilt **left** to select option **A**
@@ -21,27 +23,36 @@ A fun and interactive trivia game built using **React Native with Expo**. The ga
 7. Questions are randomly shuffled each time the game starts.
 
 ## Dependencies
+
 The game requires the following dependencies to run:
 
 ### expo-sensor
+
 - npx expo install expo-sensors
 
 ### react-native-svg
+
 - npm install react-native-svg
 
 ### react-native-svg-transformer
+
 - npm install react-native-svg-transformer
 
+### expo-font
+
+- npx expo install expo-font
 
 ## Notes
+
 - The accelerometer sensitivity can be adjusted in the `useEffect` hook inside the game logic.
 - More questions can be added to the questions.js easily.
 
 ## Future Enhancements
+
 - Add a timer for each question.
 - Introduce different difficulty levels.
 - Implement multiplayer mode.
 
 ---
-Enjoy the game! 🚀
 
+Enjoy the game! 🚀
