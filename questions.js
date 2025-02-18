@@ -214,6 +214,12 @@ export const questions = [
     correctAnswer: "A",
   },
   {
+    question: "Which keyword is used to inherit a class in Java?",
+    answerA: "extend",
+    answerB: "extends",
+    correctAnswer: "B",
+  },
+  {
     question: "In React, which function is used to update the state?",
     answerA: "setState()",
     answerB: "updateState()",
@@ -237,13 +243,6 @@ export const questions = [
     answerA: "useEffect",
     answerB: "useState",
     correctAnswer: "A",
-  },
-  {
-    question:
-      "In React, which lifecycle method is called before the component is removed from the DOM?",
-    answerA: "componentDidMount()",
-    answerB: "componentWillUnmount()",
-    correctAnswer: "B",
   },
   {
     question:
@@ -317,6 +316,7 @@ export const questions = [
     answerB: "<h1>",
     correctAnswer: "B",
   },
+
   {
     question:
       "In JavaScript, which operator is used to assign a value to a variable?",
@@ -324,6 +324,9 @@ export const questions = [
     answerB: "=",
     correctAnswer: "B",
   },
+
+  // 50 //
+
   {
     question:
       "Which JavaScript method is used to add an event listener?",
@@ -456,6 +459,13 @@ export const questions = [
   },
   {
     question:
+      "Which method converts a JSON string into a JavaScript object?",
+    answerA: "JSON.stringify",
+    answerB: "JSON.parse",
+    correctAnswer: "B",
+  },
+  {
+    question:
       "Which method is used to parse a string into an integer in JavaScript?",
     answerA: "parseInt()",
     answerB: "parseFloat()",
@@ -572,12 +582,12 @@ export const questions = [
     correctAnswer: "A",
   },
   {
-    question:
-      "In React Native, what is used for navigation between screens?",
-    answerA: "React Navigation",
-    answerB: "Navigator",
-    correctAnswer: "A",
+    question: "Which API is used for navigation in React Native?",
+    answerA: "react-router",
+    answerB: "react-navigation",
+    correctAnswer: "B",
   },
+
   {
     question:
       "Which of the following is used to attach a class to an element in JavaScript?",
@@ -585,6 +595,14 @@ export const questions = [
     answerB: "setClass()",
     correctAnswer: "A",
   },
+  {
+    question:
+      "Which function is used to schedule a function execution after a delay?",
+    answerA: "setInterval",
+    answerB: "setTimeout",
+    correctAnswer: "B",
+  },
+
   {
     question:
       "What is the method used to sort an array in JavaScript?",
@@ -605,6 +623,13 @@ export const questions = [
     answerA: "class MyClass {}",
     answerB: "function MyClass() {}",
     correctAnswer: "A",
+  },
+  {
+    question:
+      "Which object method returns an array of a given object's property names?",
+    answerA: "Object.values",
+    answerB: "Object.keys",
+    correctAnswer: "B",
   },
   {
     question:
@@ -640,6 +665,7 @@ export const questions = [
     answerB: "const",
     correctAnswer: "A",
   },
+
   {
     question:
       "Which React Native component is used for creating a scrollable list?",
@@ -647,6 +673,9 @@ export const questions = [
     answerB: "FlatList",
     correctAnswer: "B",
   },
+
+  // 100 //
+
   {
     question: "Which Java collection allows only unique elements?",
     answerA: "Set",
@@ -693,11 +722,24 @@ export const questions = [
     correctAnswer: "A",
   },
   {
+    question: "Which keyword is used to create a new thread in Java?",
+    answerA: "new",
+    answerB: "Thread",
+    correctAnswer: "A",
+  },
+  {
     question:
       "Which React function is used to return multiple JSX elements without adding extra nodes?",
     answerA: "Fragment",
     answerB: "Wrapper",
     correctAnswer: "B",
+  },
+  {
+    question:
+      "Which function is used to display alerts in React Native?",
+    answerA: "Alert",
+    answerB: "Prompt",
+    correctAnswer: "A",
   },
   {
     question: "Which Java interface is used for sorting collections?",
@@ -719,6 +761,14 @@ export const questions = [
     answerB: "static",
     correctAnswer: "A",
   },
+  {
+    question:
+      "Which attribute is used to uniquely identify elements in a React list?",
+    answerA: "id",
+    answerB: "key",
+    correctAnswer: "B",
+  },
+
   {
     question: "Which React hook is used for performing side effects?",
     answerA: "useState",
@@ -742,6 +792,12 @@ export const questions = [
     answerA: "try",
     answerB: "catch",
     correctAnswer: "A",
+  },
+  {
+    question: "Which exception type is a checked exception in Java?",
+    answerA: "IOException",
+    answerB: "NullPointerException",
+    correctAnswer: "B",
   },
   {
     question: "Which React Native component is used for text input?",
@@ -778,6 +834,13 @@ export const questions = [
   },
   {
     question:
+      "Which keyword is used to define an abstract method in Java?",
+    answerA: "abstract",
+    answerB: "interface",
+    correctAnswer: "A",
+  },
+  {
+    question:
       "Which React function is used to optimize performance by memoizing values?",
     answerA: "useCallback",
     answerB: "useMemo",
@@ -796,5 +859,339 @@ export const questions = [
     answerA: "PanResponder",
     answerB: "GestureDetector",
     correctAnswer: "B",
+  },
+  {
+    question:
+      "Which data structure is implemented using the Stack class in Java?",
+    answerA: "LIFO",
+    answerB: "FIFO",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which JavaScript feature allows functions to be passed as arguments?",
+    answerA: "Closures",
+    answerB: "First-class functions",
+    correctAnswer: "B",
+  },
+  {
+    question:
+      "Which JavaScript feature enables asynchronous code execution?",
+    answerA: "Event loop",
+    answerB: "Call stack",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which function converts a string to a number in JavaScript?",
+    answerA: "parseInt",
+    answerB: "toFixed",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which JavaScript concept is used to avoid callback hell?",
+    answerA: "Promises",
+    answerB: "async/await",
+    correctAnswer: "B",
+  },
+  {
+    question:
+      "Which function is used to copy an object's properties into another object?",
+    answerA: "Object.assign",
+    answerB: "Object.spread",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which operator can be used to create a shallow copy of an array?",
+    answerA: "spread",
+    answerB: "map",
+    correctAnswer: "A",
+  },
+  {
+    question: "Which data type in JavaScript is not primitive?",
+    answerA: "Object",
+    answerB: "Boolean",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which operator is used for optional chaining in JavaScript?",
+    answerA: "?.",
+    answerB: "??",
+    correctAnswer: "A",
+  },
+  {
+    question: "Which React feature enables component-based routing?",
+    answerA: "React Router",
+    answerB: "Context API",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which React function allows component-level error handling?",
+    answerA: "ErrorBoundary",
+    answerB: "ComponentDidCatch",
+    correctAnswer: "B",
+  },
+  {
+    question:
+      "Which annotation is used to map a Java class to a database table?",
+    answerA: "@Table",
+    answerB: "@Entity",
+    correctAnswer: "B",
+  },
+  {
+    question:
+      "Which Java interface is used to iterate over a collection?",
+    answerA: "Iterable",
+    answerB: "Iterator",
+    correctAnswer: "B",
+  },
+  {
+    question:
+      "Which exception is thrown when an object cannot be cast to a subclass?",
+    answerA: "ClassCastException",
+    answerB: "IllegalStateException",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which Java API provides a way to schedule tasks at fixed intervals?",
+    answerA: "Timer",
+    answerB: "ScheduledExecutorService",
+    correctAnswer: "B",
+  },
+  {
+    question: "Which Java feature is used for data encapsulation?",
+    answerA: "Encapsulation",
+    answerB: "Abstraction",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which Java keyword ensures that a block of code is only executed by one thread at a time?",
+    answerA: "synchronized",
+    answerB: "volatile",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which React Native component is used for handling user gestures?",
+    answerA: "PanResponder",
+    answerB: "Touchable",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which API is used to access device location in React Native?",
+    answerA: "Geolocation",
+    answerB: "LocationAPI",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which React Native component is used to display local images?",
+    answerA: "Image",
+    answerB: "ImageBackground",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which library is commonly used for handling animations in React Native?",
+    answerA: "Lottie",
+    answerB: "Reanimated",
+    correctAnswer: "B",
+  },
+
+  {
+    question:
+      "Which API is used to check internet connectivity in React Native?",
+    answerA: "NetInfo",
+    answerB: "Connectivity",
+    correctAnswer: "A",
+  },
+
+  // 150 //
+
+  {
+    question:
+      "Which React Native API is used for interacting with the status bar?",
+    answerA: "StatusBar",
+    answerB: "NavigationBar",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which HTML element is used for defining navigation links?",
+    answerA: "<nav>",
+    answerB: "<aside>",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which HTML tag is used to define self-contained content?",
+    answerA: "<section>",
+    answerB: "<article>",
+    correctAnswer: "B",
+  },
+  {
+    question:
+      "Which attribute is used to make an input field mandatory in HTML?",
+    answerA: "required",
+    answerB: "validate",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which tag is used to display content that users can edit?",
+    answerA: "<textarea>",
+    answerB: "<contenteditable>",
+    correctAnswer: "B",
+  },
+  {
+    question: "Which HTML element is used for grouping input fields?",
+    answerA: "<fieldset>",
+    answerB: "<legend>",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which HTML element is used for embedding JavaScript code?",
+    answerA: "<script>",
+    answerB: "<js>",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which attribute is used to link an input field with a label?",
+    answerA: "for",
+    answerB: "id",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which CSS property is used to create space inside an element's border?",
+    answerA: "margin",
+    answerB: "padding",
+    correctAnswer: "B",
+  },
+  {
+    question:
+      "Which CSS property makes an element stay fixed during scrolling?",
+    answerA: "position: sticky",
+    answerB: "position: fixed",
+    correctAnswer: "B",
+  },
+  {
+    question:
+      "Which CSS property applies styles to child elements but not the parent?",
+    answerA: "inherit",
+    answerB: "cascade",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which pseudo-class targets the first child of an element?",
+    answerA: ":first-of-type",
+    answerB: ":first-child",
+    correctAnswer: "B",
+  },
+  {
+    question: "Which CSS function allows for dynamic calculations?",
+    answerA: "var()",
+    answerB: "calc()",
+    correctAnswer: "B",
+  },
+  {
+    question:
+      "Which display value is used to hide an element but retain its space?",
+    answerA: "visibility: hidden",
+    answerB: "display: none",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which CSS property controls the space between lines of text?",
+    answerA: "letter-spacing",
+    answerB: "line-height",
+    correctAnswer: "B",
+  },
+  {
+    question:
+      "Which CSS method is used to apply different styles depending on screen size?",
+    answerA: "@media",
+    answerB: "@responsive",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which OOP principle promotes hiding implementation details?",
+    answerA: "Encapsulation",
+    answerB: "Abstraction",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which OOP principle allows multiple methods with the same name but different parameters?",
+    answerA: "Overriding",
+    answerB: "Overloading",
+    correctAnswer: "B",
+  },
+  {
+    question:
+      "Which OOP concept ensures that a class has only one instance?",
+    answerA: "Singleton",
+    answerB: "Factory",
+    correctAnswer: "A",
+  },
+  {
+    question: "Which relationship is described as 'is-a' in OOP?",
+    answerA: "Inheritance",
+    answerB: "Composition",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which OOP principle refers to the ability of different classes to be treated as the same type?",
+    answerA: "Polymorphism",
+    answerB: "Encapsulation",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which OOP feature allows a subclass to modify the behavior of a parent method?",
+    answerA: "Overriding",
+    answerB: "Overloading",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which OOP principle prevents modification of an object’s state after creation?",
+    answerA: "Immutability",
+    answerB: "Encapsulation",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which OOP concept allows a class to use multiple methods with the same name but different logic?",
+    answerA: "Method overloading",
+    answerB: "Method overriding",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which design pattern is used for creating object hierarchies?",
+    answerA: "Prototype",
+    answerB: "Builder",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which principle promotes loose coupling and high cohesion?",
+    answerA: "SOLID",
+    answerB: "DRY",
+    correctAnswer: "A",
   },
 ];

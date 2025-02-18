@@ -13,10 +13,11 @@ import { Accelerometer } from "expo-sensors";
 import { questions } from "./questions";
 import Heart from "./assets/Heart.svg";
 
+// Set screen size
 const { width: screenWidth, height: screenHeight } =
   Dimensions.get("window");
 
-// Function to shuffle and pick 20 questions
+// Shuffle and pick 20 random questions
 const getRandomQuestions = (questions, limit = 20) => {
   return [...questions]
     .sort(() => Math.random() - 0.5)
@@ -33,36 +34,67 @@ export default function App() {
   const [isProcessingAnswer, setIsProcessingAnswer] = useState(false);
   const [totalAttempts, setTotalAttempts] = useState(0);
   const [feedback, setFeedback] = useState(null);
+  const [needsReset, setNeedsReset] = useState(false);
+  const [lastTiltDirection, setLastTiltDirection] = useState(null);
 
-  // Pick 20 random questions at start
+  // Pick the randomized questions once component loads
   useEffect(() => {
     setShuffledQuestions(getRandomQuestions(questions));
   }, []);
 
+  // Exit if there is no question or game is over
   useEffect(() => {
-    if (shuffledQuestions.length === 0) return;
+    if (shuffledQuestions.length === 0 || gameOver) return;
 
-    let subscription;
-    if (!isProcessingAnswer) {
-      // Only listen when not processing
-      subscription = Accelerometer.addListener(({ x }) => {
-        if (x > 0.4) {
-          setTiltBackground("#5289EF");
+    // Set up listener for accelerometer data
+    const subscription = Accelerometer.addListener(({ x }) => {
+      // When device is in neutral position and we need to reset
+      // Math.abs() gives the absolute value, checking if x is between -0.2 and 0.2
+      if (Math.abs(x) < 0.2 && needsReset) {
+        setNeedsReset(false);
+        setTiltBackground(null);
+
+        // Only advance to next question when device returns to neutral
+        if (currentQuestionIndex < shuffledQuestions.length - 1) {
+          setCurrentQuestionIndex((prev) => prev + 1);
+        } else {
+          setGameOver(true);
+        }
+
+        setFeedback(null);
+        setIsProcessingAnswer(false);
+        setLastTiltDirection(null);
+      }
+      // When not processing an answer nor waiting for the device to return to neutral, detect new tilts
+      else if (!isProcessingAnswer && !needsReset) {
+        if (x > 0.4 && lastTiltDirection !== "right") {
+          setTiltBackground("#BD6FF5");
           checkAnswer("B");
-        } else if (x < -0.4) {
+          setLastTiltDirection("right");
+        } else if (x < -0.4 && lastTiltDirection !== "left") {
           setTiltBackground("#F34D4D");
           checkAnswer("A");
+          setLastTiltDirection("left");
         }
-      });
-      Accelerometer.setUpdateInterval(400);
-    }
+      }
+    });
 
-    return () => subscription?.remove();
-  }, [currentQuestionIndex, shuffledQuestions, isProcessingAnswer]);
+    // Update frequency set to 400ms to balance responsiveness and performance
+    Accelerometer.setUpdateInterval(400);
+    return () => subscription.remove();
+  }, [
+    currentQuestionIndex,
+    shuffledQuestions,
+    isProcessingAnswer,
+    needsReset,
+    lastTiltDirection,
+    gameOver,
+  ]);
 
   // Play game, update scores and attempts
   const checkAnswer = (selectedAnswer) => {
     if (shuffledQuestions.length === 0 || isProcessingAnswer) return;
+    // Prevents multiple answers from being processed at the same time by disabling input temporarily.
     setIsProcessingAnswer(true);
 
     const currentQuestion = shuffledQuestions[currentQuestionIndex];
@@ -79,26 +111,17 @@ export default function App() {
       setFeedback("[  nope  ]");
     }
 
-    // set timeout interval to prevent questions from displaying too fast
-    setTimeout(() => {
-      setFeedback(null); // Clear feedback after 1 second
-      setTiltBackground(null);
-      if (currentQuestionIndex < shuffledQuestions.length - 1) {
-        setCurrentQuestionIndex((prev) => prev + 1);
-      } else {
-        setGameOver(true);
-      }
-      setIsProcessingAnswer(false);
-    }, 800);
+    // Wait for device to return to neutral before next cycle
+    setNeedsReset(true);
   };
 
   // Display heart SVG based on remaining lives
   const renderLives = () => {
     let hearts = [];
     for (let i = 0; i < lives; i++) {
-      hearts.push(<Heart key={i} width={24} height={24} />); // Render the Heart SVG
+      hearts.push(<Heart key={i} width={24} height={24} />);
     }
-    return <View style={styles.heartsContainer}>{hearts}</View>; // Wrap in a View
+    return <View style={styles.heartsContainer}>{hearts}</View>;
   };
 
   useEffect(() => {
@@ -112,6 +135,9 @@ export default function App() {
     setCurrentQuestionIndex(0);
     setGameOver(false);
     setTiltBackground(null);
+    setFeedback(null);
+    setNeedsReset(false);
+    setLastTiltDirection(null);
     setShuffledQuestions(getRandomQuestions(questions)); // Get new 20 random questions
   };
 
@@ -418,8 +444,8 @@ const styles = StyleSheet.create({
   },
 
   feedbackText: {
-    fontSize: 24,
-    fontWeight: "bold",
+    fontSize: 32,
+    // fontWeight: "bold",
     color: "#FFFFFF",
   },
 
