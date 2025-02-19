@@ -4,11 +4,11 @@ A fun and interactive trivia game built using **React Native with Expo**. The ga
 
 ## Features
 
-- Randomly selected trivia questions
-- Interactive answering using device tilt (left/right)
-- Score tracking and feedback system
+- 199 carefully curated software engineering questions for all levels
+- Interactive answering mechanism using device accelerometer
+- Score tracking with end game summary
 - Limited lives to increase challenge
-- Clean and engaging UI
+- Clean, intuitive and engaging UI
 
 ## Game Mechanics
 
@@ -18,7 +18,7 @@ A fun and interactive trivia game built using **React Native with Expo**. The ga
    - Tilt **right** to select option **B**
 3. Correct answers increase the **score**.
 4. Incorrect answers reduce the **lives**.
-5. The game ends when all lives are lost.
+5. The game ends when all lives are lost or player answers 20 questions.
 6. A feedback message appears after each answer.
 7. Questions are randomly shuffled each time the game starts.
 
