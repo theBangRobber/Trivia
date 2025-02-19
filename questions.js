@@ -233,7 +233,7 @@ export const questions = [
   },
   {
     question:
-      "Which of the following is used to add interactivity to a webpage in JavaScript?",
+      "Which of the following is used to add interactivity to a webpage?",
     answerA: "HTML",
     answerB: "JavaScript",
     correctAnswer: "B",
@@ -556,7 +556,7 @@ export const questions = [
   },
   {
     question:
-      "Which ES6 feature allows you to easily combine multiple arrays into a single array?",
+      "Which Javascript ES6 feature allows you to easily combine multiple arrays into a single array?",
     answerA: "spread operator",
     answerB: "concat()",
     correctAnswer: "A",
@@ -619,14 +619,14 @@ export const questions = [
   },
   {
     question:
-      "Which of the following is the correct syntax to create a class in ES6?",
+      "Which of the following is the correct syntax to create a class in Javascript ES6?",
     answerA: "class MyClass {}",
     answerB: "function MyClass() {}",
     correctAnswer: "A",
   },
   {
     question:
-      "Which object method returns an array of a given object's property names?",
+      "Which Javascript object method returns an array of a given object's property names?",
     answerA: "Object.values",
     answerB: "Object.keys",
     correctAnswer: "B",
@@ -788,9 +788,10 @@ export const questions = [
     correctAnswer: "B",
   },
   {
-    question: "Which Java keyword is used for handling exceptions?",
-    answerA: "try",
-    answerB: "catch",
+    question:
+      "Which Java keyword is used to create custom exception?",
+    answerA: "throw",
+    answerB: "throws",
     correctAnswer: "A",
   },
   {
@@ -951,7 +952,7 @@ export const questions = [
   },
   {
     question:
-      "Which exception is thrown when an object cannot be cast to a subclass?",
+      "Which Java exception is thrown when an object cannot be cast to a subclass?",
     answerA: "ClassCastException",
     answerB: "IllegalStateException",
     correctAnswer: "A",
@@ -1045,7 +1046,7 @@ export const questions = [
   },
   {
     question:
-      "Which tag is used to display content that users can edit?",
+      "Which tag in HTML is used to display content that users can edit?",
     answerA: "<textarea>",
     answerB: "<contenteditable>",
     correctAnswer: "B",
@@ -1065,7 +1066,7 @@ export const questions = [
   },
   {
     question:
-      "Which attribute is used to link an input field with a label?",
+      "Which attribute is used in HTML to link an input field with a label?",
     answerA: "for",
     answerB: "id",
     correctAnswer: "A",
@@ -1093,7 +1094,7 @@ export const questions = [
   },
   {
     question:
-      "Which pseudo-class targets the first child of an element?",
+      "Which CSS pseudo-class targets the first child of an element?",
     answerA: ":first-of-type",
     answerB: ":first-child",
     correctAnswer: "B",
@@ -1106,7 +1107,7 @@ export const questions = [
   },
   {
     question:
-      "Which display value is used to hide an element but retain its space?",
+      "In CSS, which display value is used to hide an element but retain its space?",
     answerA: "visibility: hidden",
     answerB: "display: none",
     correctAnswer: "A",
@@ -1194,4 +1195,158 @@ export const questions = [
     answerB: "DRY",
     correctAnswer: "A",
   },
+  {
+    question:
+      "Which React feature allows handling async logic in reducers?",
+    answerA: "useReducer",
+    answerB: "useAsyncReducer",
+    correctAnswer: "A",
+  },
+  {
+    question: "Which method is used to handle cleanup in useEffect?",
+    answerA: "return function",
+    answerB: "cleanup()",
+    correctAnswer: "A",
+  },
+  {
+    question: "Which of the following is used for multi-threading?",
+    answerA: "Runnable",
+    answerB: "ExecutorService",
+    correctAnswer: "B",
+  },
+  {
+    question:
+      "Which Java feature ensures that resources are closed after use?",
+    answerA: "try-with-resources",
+    answerB: "finalize()",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which exception in Java is thrown when dividing by zero?",
+    answerA: "ArithmeticException",
+    answerB: "NullPointerException",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which interface is used for functional programming in Java?",
+    answerA: "FunctionalInterface",
+    answerB: "Serializable",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which JavaScript event occurs when an element is clicked?",
+    answerA: "onHover",
+    answerB: "onClick",
+    correctAnswer: "B",
+  },
+  {
+    question: "Which package helps manage gestures in React Native?",
+    answerA: "react-native-gesture-handler",
+    answerB: "react-native-animations",
+    correctAnswer: "A",
+  },
+  {
+    question: "Which React Native command starts the Metro bundler?",
+    answerA: "npm start",
+    answerB: "expo start",
+    correctAnswer: "B",
+  },
+  {
+    question: "Which method is used to batch state updates in React?",
+    answerA: "ReactDOM.flushSync",
+    answerB: "useBatch",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which React prop type allows passing functions as props?",
+    answerA: "PropTypes.func",
+    answerB: "PropTypes.object",
+    correctAnswer: "A",
+  },
+  {
+    question: "Which React event is triggered on form submission?",
+    answerA: "onSubmit",
+    answerB: "onClick",
+    correctAnswer: "A",
+  },
+  {
+    question: "Which Java feature allows multiple inheritance?",
+    answerA: "Interfaces",
+    answerB: "Abstract Classes",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which access modifier in Java makes a member visible within the same package?",
+    answerA: "protected",
+    answerB: "default",
+    correctAnswer: "B",
+  },
+  {
+    question:
+      "Which collection class maintains key-value pairs in Java?",
+    answerA: "Set",
+    answerB: "Map",
+    correctAnswer: "B",
+  },
+  {
+    question:
+      "Which method in Java is used to compare objects for equality?",
+    answerA: "==",
+    answerB: "equals()",
+    correctAnswer: "B",
+  },
+  {
+    question: "Which data structure allows LIFO access?",
+    answerA: "Queue",
+    answerB: "Stack",
+    correctAnswer: "B",
+  },
+  {
+    question:
+      "Which JavaScript method is used to find the index of an element in an array?",
+    answerA: "indexOf()",
+    answerB: "find()",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which operator is used to merge objects in Javascript?",
+    answerA: "concat()",
+    answerB: "spread (...)",
+    correctAnswer: "B",
+  },
+  {
+    question: "Which statement stops the execution of a loop?",
+    answerA: "break",
+    answerB: "continue",
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Which component allows navigation between screens in React Native?",
+    answerA: "TabNavigator",
+    answerB: "StackNavigator",
+    correctAnswer: "B",
+  },
+  {
+    question:
+      "Which package is used for handling push notifications in React Native?",
+    answerA: "react-native-push-notification",
+    answerB: "expo-notifications",
+    correctAnswer: "B",
+  },
+  {
+    question:
+      "Which React Native component is used for adding safe margins on different devices?",
+    answerA: "SafeAreaView",
+    answerB: "View",
+    correctAnswer: "A",
+  },
+
+  // 199 //
 ];
