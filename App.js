@@ -66,7 +66,7 @@ export default function App() {
       return;
     }
 
-    // Set up listener for accelerometer data
+    // Set up listener for accelerometer data and manage all different tilt positions / states
     const subscription = Accelerometer.addListener(({ x }) => {
       // When device is in neutral position and we need to reset
       // Math.abs() gives the absolute value, checking if x is between -0.2 and 0.2
@@ -74,7 +74,7 @@ export default function App() {
         setNeedsReset(false);
         setTiltBackground(null);
 
-        // Only advance to next question when device returns to neutral
+        // Only advance to next question when device returns to neutral and if the current question index is less than the last question
         if (currentQuestionIndex < shuffledQuestions.length - 1) {
           setCurrentQuestionIndex((prev) => prev + 1);
         } else {
@@ -383,7 +383,7 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    fontFamily: "Orbitron", // Custom font applied
+    fontFamily: "Orbitron",
     fontSize: 18,
     color: "#333",
   },
@@ -522,7 +522,7 @@ const styles = StyleSheet.create({
 
   bottomContainer: {
     alignItems: "center",
-    marginBottom: 20, // Adjust this for spacing between button and text
+    marginBottom: 20,
   },
 
   resetButton: {
@@ -534,8 +534,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 25, // This keeps it close to the footer text
-
+    marginBottom: 25,
     // Shadow for iOS
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 3 },

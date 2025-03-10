@@ -1,5 +1,5 @@
 {
-  "name": "trivia",
+  "name": "compile-and-conquer",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
